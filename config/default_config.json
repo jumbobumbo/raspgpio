@@ -1,0 +1,12 @@
+{
+	"connection": {
+		"ip_add": "192.168.1.99"
+	},
+	"active_led": {
+		"led1": 5,
+		"led2": 6,
+		"led3": 13,
+		"led4": 19,
+		"led5": 26
+	}
+}
