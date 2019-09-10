@@ -2,6 +2,7 @@ import os
 import sys
 from pathlib import Path
 from startup_classes import connector, json_reader
+from led import led_config
 
 # check to see if the Config DIR has more than one file in it
 config_dir_list = os.listdir("./config")  # dir where config json files are stored
@@ -29,3 +30,10 @@ ip_add = config_read.reader()["connection"]["ip_add"]
 # connect to remote pi
 conn_1_start = connector.PiConnect(ip_add)
 conn_1 = conn_1_start.factory_connector()
+"""  what are we working with? LEDs, other outputs? """
+setup = config_read.reader()["setup"]
+# TODO: THERE MUST BE A CLEANER WAY TO DO THE BELOW...
+if setup == "LED":
+    active_leds = led_config.LED([5,6], conn_1)
+    led_pins = active_leds.pins()
+    led_pins[0].off()
