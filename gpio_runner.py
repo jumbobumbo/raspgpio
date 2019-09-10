@@ -1,7 +1,7 @@
 import os
 import sys
 from pathlib import Path
-from startup_classes import config, connector, json_reader
+from startup_classes import connector, json_reader
 
 # check to see if the Config DIR has more than one file in it
 config_dir_list = os.listdir("./config")  # dir where config json files are stored
@@ -19,8 +19,13 @@ else:  # we ask the user to choose a file
         print(f"Input error: {ex}")
         sys.exit(1)  # Goodnight
 
-# Read the config file
+"""
+Connect and configure
+All using the config file
+"""
 config_read = json_reader.JSONReads(config_file)
-# connection IP add
-ip_add = config_read.reader()
-print(ip_add)
+# find the connection IP add
+ip_add = config_read.reader()["connection"]["ip_add"]
+# connect to remote pi
+conn_1_start = connector.PiConnect(ip_add)
+conn_1 = conn_1_start.factory_connector()

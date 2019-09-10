@@ -7,7 +7,11 @@ class JSONReads:
         self.json_file = json_file
 
     def reader(self):
-        # TODO: ADD DOCSTRING
+        """
+        reads the self.json_file and
+        :return: json data
+        """
         with open(self.json_file, "r") as jf:
             js_data = json.load(jf)  # read the data
             return js_data
+

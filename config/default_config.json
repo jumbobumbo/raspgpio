@@ -2,7 +2,8 @@
 	"connection": {
 		"ip_add": "192.168.1.99"
 	},
-	"active_led": {
+	"setup": "LED",
+	"LEDs": {
 		"led1": 5,
 		"led2": 6,
 		"led3": 13,
