@@ -1,5 +1,6 @@
 from startup_classes import connector, json_reader, config_selector
 from default_classes import data_handlers
+from teardown.teardown import TearDown
 from led import led_conn
 import time
 
@@ -20,3 +21,5 @@ LED_board = LED_board.board()
 for i, v in enumerate(LED_board):
     LED_board.on(i)
     time.sleep(1)
+# kill
+TearDown.down(LED_board)
