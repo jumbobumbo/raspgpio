@@ -9,6 +9,7 @@ verify_ssl = true
 pathlib = "*"
 gpiozero = "*"
 pigpio = "*"
+dirsync = "*"
 
 [requires]
 python_version = "3.7"
