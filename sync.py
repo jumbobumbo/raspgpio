@@ -6,14 +6,6 @@ from dirsync import sync
 from pathlib import Path
 
 
-""" FILE SYNC CONFIG """
-# regex for ignore files
-regex = r".+\.(txt|log|git|jar)$"  # populated examples
-# DIRECTORIES
-dirs = {
-        "c:/Users/dbwheeler/Documents/Cities_Skylines": "c:/Users/dbwheeler/Documents/dumps2"
-}
-
 """ CONNECT TO PI AND CREATE LED BOARD OBJECT """
 # Select file and create connection object
 # Open conf file (read json for IP and connect)
@@ -30,10 +22,14 @@ LED_pins = conf_reader.finder(conf_file, "LEDs")
 LED_board = led_conn.LED(data_handlers.HandleData.dict_to_value_list(LED_pins), pi_conn)
 LED_board = LED_board.board()
 
-""" COPY THE FILES """
+""" FILE SYNC CONFIG """
+# regex for ignore files
+regex = r".+\.(txt|log|git|jar)$"
 
-for s, d in dirs.items():
-        LED_board.value = (1, 0, 1, 0, 1)
+""" COPY THE FILES """
+for s, d in conf_reader.finder(conf_file, "dirs").items():
         LED_board.blink()
         sync(Path(s), Path(d), "sync", verbose=False, exclude=(regex,))
+
+# complete
 TearDown.down(LED_board)
