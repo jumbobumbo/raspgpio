@@ -14,6 +14,7 @@ pi_conn = connector.PiConnect.single_factory_connector(conf_reader.finder(conf_f
 """ Get an LED board up and running """
 # read LED values from conf
 LED_pins = conf_reader.finder(conf_file, "LEDs")
+print(LED_pins)
 # Set the board up
 LED_board = led_conn.LED(data_handlers.HandleData.dict_to_value_list(LED_pins), pi_conn)
 LED_board = LED_board.board()
@@ -23,3 +24,4 @@ for i, v in enumerate(LED_board):
     time.sleep(1)
 # kill
 TearDown.down(LED_board)
+

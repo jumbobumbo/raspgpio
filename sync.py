@@ -9,6 +9,7 @@ from pathlib import Path
 """ CONNECT TO PI AND CREATE LED BOARD OBJECT """
 # Select file and create connection object
 # Open conf file (read json for IP and connect)
+# TODO: FIX this
 conf_file = json_reader.JSONReads.reader(config_selector.ConfSelect.selection())  # use default file and open it
 
 """  Create config reader """

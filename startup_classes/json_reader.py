@@ -2,26 +2,26 @@ import json
 
 
 class JSONReads:
+    def __init__(self, json_file):
+        self.json_data = json_file
 
-    @staticmethod
-    def reader(json_file):
-        """
-        reads the self.json_file and
-        :return: json data
-        """
-        with open(json_file, "r") as jf:
-            js_data = json.load(jf)  # read the data
-            return js_data
+    @property
+    def json_data(self):
+        return self.__json_data
 
-    @staticmethod
-    def finder(js_data, key1, key2=None):
+    @json_data.setter
+    def json_data(self, json_file):
+        with open(json_file, "r") as f:
+            self.__json_data = json.load(f)
+
+    # TODO: BE SMARTER
+    def finder(self, key1, key2=None):
         """
-        finds the ip addr in the json data
-        key1: str
-        key2: None - str
-        :return: ip addr value
+        key1: key
+        key2: None - key
+        :return: value
         """
         if not key2:  # one value provided
-            return js_data[key1]
+            return self.json_data[key1]
         else:  # looking for a nest
-            return js_data[key1][key2]
+            return self.json_data[key1][key2]
