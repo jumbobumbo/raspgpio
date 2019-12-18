@@ -1,22 +1,17 @@
-from startup_classes import connector
 from startup_classes import json_reader as jr
-from default_classes import data_handlers
-from teardown.teardown import TearDown
-from led import led_conn
 from dirsync import sync
 from pathlib import Path
 
 
 class Syncer:
-    def __init__(self, dir_key, regex, conf_path):
+    def __init__(self, regex, dir_key, conf_path):
         """
+        regex: raw str - files to ignore in sync - example: r".+\.(txt|log|git|jar)$"
+        dir_key: key from json file (directories to sync)
         conf: Path object to config file
-        dir_key: str - directories to sync (key from json file)
-        regex: raw str - files to ignore in sync
-        example: r".+\.(txt|log|git|jar)$"
         """
-        self.dir_key = dir_key
         self.regex = regex
+        self.dir_key = dir_key
         self.conf_data = conf_path
 
     @property
@@ -24,5 +19,13 @@ class Syncer:
         return self.__conf_data
 
     @conf_data.setter
-    def conf_data(self, conf_path):
+    def conf_data(self, conf_path):  # returns the key values
         self.__conf_data = jr.JSONReads(conf_path).json_data[self.dir_key]
+
+    def start_sync(self):
+        """
+        loop through key, values in self.conf_data dict
+        """
+        for source, dest in self.conf_data.items():
+            # start syncing
+            sync(Path(source), Path(dest), "sync", verbose=False, exclude=(self.regex,))
