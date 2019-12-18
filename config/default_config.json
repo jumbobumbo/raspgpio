@@ -1,7 +1,5 @@
 {
-	"connection": {
-		"ip_add": "192.168.1.99"
-	},
+	"pi_ip_add": "192.168.1.99",
 	"setup": "LED",
 	"LEDs": {
 		"led1": 5,
@@ -11,7 +9,7 @@
 		"led5": 26
 	},
 	"dirs": {
-        "/home/jumbo/terraria": "/media/3tbred/backups/terraria",
-		"/home/jumbo/minecraft": "/media/3tbred/backups/minecraft"
+        "/home/jumbo/Documents/test1": "/home/jumbo/Documents/test2",
+		"/home/jumbo/Documents/test2": "/home/jumbo/Documents/test3"
 	}
 }
