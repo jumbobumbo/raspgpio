@@ -7,7 +7,7 @@ class JSONReads:
     """
     def __init__(self, json_file):
         """
-        json_file: Path OBJ to file
+        json_file: Path OBJ to (and including) json file
         """
         self.json_data = json_file
 
@@ -19,3 +19,6 @@ class JSONReads:
     def json_data(self, json_file):
         with open(json_file, "r") as f:
             self.__json_data = json.load(f)
+
+    def __repr__(self):
+        return str(self.json_data)
