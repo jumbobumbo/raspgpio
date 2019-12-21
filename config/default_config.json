@@ -9,7 +9,7 @@
 		"led5": 26
 	},
 	"minecraft": {
-        "/home/jumbo/minecraft": "/media/3tbred/backups/minecraft",
+		"/home/jumbo/minecraft": "/media/3tbred/backups/minecraft",
 		"/home/jumbo/minecraft1": "/media/3tbred/backups/minecraft1"
 	},
 	"terraria": {
