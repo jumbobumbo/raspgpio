@@ -58,4 +58,3 @@ class LEDSyncer(Syncer):
         except (IOError, OSError) as error:  # connection rejections
             print(f"{error} occurred when connecting to PI. Will sync without blink")
             self.file_sync()  # still sync the data
-            # TODO: add handling of sync operation error
