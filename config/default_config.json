@@ -8,8 +8,14 @@
 		"led4": 19,
 		"led5": 26
 	},
-	"dirs": {
-        "/home/jumbo/Documents/test1": "/home/jumbo/Documents/test2",
-		"/home/jumbo/Documents/test2": "/home/jumbo/Documents/test3"
+	"minecraft": {
+        "/home/jumbo/minecraft": "/media/3tbred/backups/minecraft",
+		"/home/jumbo/minecraft1": "/media/3tbred/backups/minecraft1"
+	},
+	"terraria": {
+		"/home/jumbo/terraria": "/media/3tbred/backups/terraria"
+	},
+	"plex": {
+		"/home/jumbo/plex": "/media/3tbred/backups/plex"
 	}
 }
